@@ -1,0 +1,55 @@
+_*System Design Topics*_ 💡💡💡
+├── *Scalability* 🚀
+│   ├── Load Balancing
+│   ├── Caching
+│   ├── Data Partitioning
+│   └── Database Sharding
+├── *Data Storage* 📦
+│   ├── SQL Databases
+│   ├── NoSQL Databases
+│   ├── NewSQL Databases
+│   └── Data Warehousing
+├── *Messaging and Communication* 🗨️
+│   ├── Message Queues
+│   ├── Publish-Subscribe (Pub/Sub)
+│   ├── Stream Processing
+│   └── WebSockets
+├── *Microservices* 🛠️
+│   ├── Service Discovery
+│   ├── API Gateway
+│   ├── Circuit Breaker
+│   └── Containerization
+├── *Content Delivery* 📡
+│   ├── Content Delivery Networks (CDN)
+│   ├── Edge Computing
+│   └── Load Distribution
+├── *Security* 🔒
+│   ├── Authentication
+│   ├── Authorization
+│   ├── Data Encryption
+│   └── Secure Communication
+├── *Monitoring and Logging* 🛠️
+│   ├── Performance Monitoring
+│   ├── Log Management
+│   ├── Distributed Tracing
+│   └── Alerting and Notifications
+├── *APIs and Protocols* 🌐
+│   ├── REST APIs
+│   ├── GraphQL
+│   ├── gRPC
+│   └── WebRTC
+├── *Data Processing* 🔄
+│   ├── Batch Processing
+│   ├── Real-Time Processing
+│   ├── MapReduce
+│   └── ETL Pipelines
+├── *DevOps* 🔧
+│   ├── Continuous Integration (CI)
+│   ├── Continuous Deployment (CD)
+│   ├── Infrastructure as Code (IaC)
+│   └── Configuration Management
+└── *Architecture Patterns* 🏛️
+    ├── Monolithic Architecture
+    ├── Microservices Architecture
+    ├── Serverless Architecture
+    └── Event-Driven Architecture

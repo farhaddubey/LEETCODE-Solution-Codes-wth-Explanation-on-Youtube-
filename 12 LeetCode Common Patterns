@@ -1,0 +1,302 @@
+_*Common Patterns to solve numerical problems on LeetCode, with explanations and examples in :*_
+
+*1. Sliding Window*
+Use Case: Problems involving contiguous subarrays or substrings.
+Explanation: Maintain a window that slides over the array to find the optimal subarray.
+Example:
+Problem: Maximum Sum Subarray of Size K
+
+_*public class SlidingWindow {*_
+    public static int maxSubArraySum(int[] arr, int k) {
+        int maxSum = 0, windowSum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            windowSum += arr[i];
+            if (i >= k - 1) {
+                maxSum = Math.max(maxSum, windowSum);
+                windowSum -= arr[i - (k - 1)];
+            }
+        }
+        return maxSum;
+    }
+}
+
+*2. Two Pointers*
+Use Case: Sorted arrays or linked lists where you need to find pairs or manipulate subarrays.
+Explanation: Use two pointers to scan the array from different directions.
+Example:
+Problem: Two Sum II (Input Array Is Sorted)
+
+_*public class TwoPointers {*_
+    public static int[] twoSum(int[] numbers, int target) {
+        int left = 0, right = numbers.length - 1;
+        while (left < right) {
+            int sum = numbers[left] + numbers[right];
+            if (sum == target) {
+                return new int[] { left + 1, right + 1 };
+            } else if (sum < target) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return new int[] {};
+    }
+}
+
+*3. Fast and Slow Pointers*
+Use Case: Detecting cycles in linked lists or arrays.
+Explanation: Use two pointers moving at different speeds to detect cycles.
+Example:
+Problem: Linked List Cycle
+
+_*public class FastSlowPointers {*_
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
+    
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+*4. Merge Intervals*
+Use Case: Problems involving overlapping intervals.
+Explanation: Sort intervals and merge them if they overlap.
+Example:
+Problem: Merge Intervals
+
+_*public class MergeIntervals {*_
+    public int[][] merge(int[][] intervals) {
+        if (intervals.length <= 1) return intervals;
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        List<int[]> result = new ArrayList<>();
+        int[] currentInterval = intervals[0];
+        result.add(currentInterval);
+        for (int[] interval : intervals) {
+            if (interval[0] <= currentInterval[1]) {
+                currentInterval[1] = Math.max(currentInterval[1], interval[1]);
+            } else {
+                currentInterval = interval;
+                result.add(currentInterval);
+            }
+        }
+        return result.toArray(new int[result.size()][]);
+    }
+}
+
+*5. Cyclic Sort*
+Use Case: Sorting problems where elements are in a range from 1 to n.
+Explanation: Place each element in its correct index.
+Example:
+Problem: Find All Numbers Disappeared in an Array
+
+_*public class CyclicSort {*_
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        int i = 0;
+        while (i < nums.length) {
+            int correctIndex = nums[i] - 1;
+            if (nums[i] != nums[correctIndex]) {
+                int temp = nums[i];
+                nums[i] = nums[correctIndex];
+                nums[correctIndex] = temp;
+            } else {
+                i++;
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] != j + 1) {
+                result.add(j + 1);
+            }
+        }
+        return result;
+    }
+}
+
+*6. In-place Reversal of Linked List*
+Use Case: Reversing linked lists or parts of them.
+Explanation: Reverse nodes in place to avoid extra space.
+Example:
+Problem: Reverse Linked List
+
+_*public class InPlaceReversal {*_
+    class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
+    
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        return prev;
+    }
+}
+
+*7. Tree Traversal*
+Use Case: Problems involving tree traversal (preorder, inorder, postorder, level order).
+Explanation: Use recursion or iteration to traverse trees.
+Example:
+Problem: Binary Tree Level Order Traversal
+
+_*public class TreeTraversal {*_
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+        TreeNode(int x) { val = x; }
+    }
+    
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if (root == null) return result;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+            for (int i = 0; i < levelSize; i++) {
+                TreeNode currentNode = queue.poll();
+                currentLevel.add(currentNode.val);
+                if (currentNode.left != null) queue.offer(currentNode.left);
+                if (currentNode.right != null) queue.offer(currentNode.right);
+            }
+            result.add(currentLevel);
+        }
+        return result;
+    }
+}
+
+*8. Dynamic Programming (DP)*
+Use Case: Optimization problems with overlapping subproblems and optimal substructure.
+Explanation: Break the problem into subproblems and store results to avoid redundant calculations.
+Example:
+Problem: Climbing Stairs
+
+_*public class DynamicProgramming {*_
+    public int climbStairs(int n) {
+        if (n <= 2) return n;
+        int[] dp = new int[n + 1];
+        dp[1] = 1;
+        dp[2] = 2;
+        for (int i = 3; i <= n; i++) {
+            dp[i] = dp[i - 1] + dp[i - 2];
+        }
+        return dp[n];
+    }
+}
+
+*9. Backtracking*
+Use Case: Combinatorial problems where you need to explore all possible solutions.
+Explanation: Use recursion to explore all possibilities and backtrack to find the correct solutions.
+Example:
+Problem: Subsets
+
+_*public class Backtracking {
+    public List<List<Integer>> subsets(int[] nums) {*_
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(res, new ArrayList<>(), nums, 0);
+        return res;
+    }
+
+    private void backtrack(List<List<Integer>> res, List<Integer> tempList, int[] nums, int start) {
+        res.add(new ArrayList<>(tempList));
+        for (int i = start; i < nums.length; i++) {
+            tempList.add(nums[i]);
+            backtrack(res, tempList, nums, i + 1);
+            tempList.remove(tempList.size() - 1);
+        }
+    }
+}
+
+*10. Depth-First Search (DFS) and Breadth-First Search (BFS)*
+Use Case: Graph traversal or problems involving connected components.
+Explanation: Use stack (DFS) or queue (BFS) to explore nodes/vertices.
+Example:
+Problem: Number of Islands (DFS)
+
+_*public class DFSBFS {*_
+    public int numIslands(char[][] grid) {
+        if (grid == null || grid.length == 0) return 0;
+        int numIslands = 0;
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (grid[i][j] == '1') {
+                    numIslands += dfs(grid, i, j);
+                }
+            }
+        }
+        return numIslands;
+    }
+
+    private int dfs(char[][] grid, int i, int j) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0') {
+            return 0;
+        }
+        grid[i][j] = '0';
+        dfs(grid, i + 1, j);
+        dfs(grid, i - 1, j);
+        dfs(grid, i, j + 1);
+        dfs(grid, i, j - 1);
+        return 1;
+    }
+}
+
+*11. Bit Manipulation*
+Use Case: Problems involving binary representations and bit operations.
+Explanation: Use bitwise operators to solve problems efficiently.
+Example:
+Problem: Single Number
+
+_*public class BitManipulation {*_
+    public int singleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+}
+
+*12. Greedy Algorithms*
+Use Case: Optimization problems where local optimal choices lead to a global optimal solution.
+Explanation: Make the best possible choice at each step.
+Example:
+Problem: Jump Game
+
+_*public class GreedyAlgorithms {*_
+    public boolean canJump(int[] nums) {
+        int maxReach = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > maxReach) return false;
+            maxReach = Math.max(maxReach, i + nums[i]);
+        }
+        return true;
+    }
+}
+
+Understanding these patterns and practicing problems related to each one can significantly enhance
+ability to solve a wide range of numerical problems on LeetCode.

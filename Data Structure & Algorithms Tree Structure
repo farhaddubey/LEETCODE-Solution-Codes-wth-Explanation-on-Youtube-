@@ -1,0 +1,70 @@
+├── _*Machine Learning Algorithms*_
+├── *Supervised Learning* ❤️
+│   ├── *Regression* ❤️
+│   │   ├── Linear Regression
+│   │   ├── Logistic Regression
+│   │   ├── Polynomial Regression
+│   │   ├── Ridge Regression
+│   │   ├── Lasso Regression
+│   │   ├── Elastic Net Regression
+│   │   └── Bayesian Regression
+│   ├── *Classification* ❤️
+│   │   ├── Decision Trees
+│   │   ├── Random Forest
+│   │   ├── Support Vector Machines (SVM)
+│   │   ├── K-Nearest Neighbors (KNN)
+│   │   ├── Naive Bayes
+│   │   ├── Gradient Boosting Machines (GBM)
+│   │   ├── AdaBoost
+│   │   ├── XGBoost
+│   │   ├── LightGBM
+│   │   ├── CatBoost
+│   │   ├── Neural Networks
+│   │   └── Ensemble Methods
+│   └── *Time Series* ❤️
+│       ├── ARIMA
+│       ├── SARIMA
+│       ├── Prophet
+│       ├── LSTM
+│       └── GRU
+├── *Unsupervised Learning* ❤️
+│   ├── *Clustering* ❤️
+│   │   ├── K-Means
+│   │   ├── Hierarchical Clustering
+│   │   ├── DBSCAN
+│   │   ├── Mean Shift
+│   │   ├── Gaussian Mixture Models (GMM)
+│   │   └── Agglomerative Clustering
+│   ├── *Association* ❤️
+│   │   ├── Apriori
+│   │   ├── Eclat
+│   │   └── FP-Growth
+│   └── *Dimensionality Reduction* ❤️
+│       ├── Principal Component Analysis (PCA)
+│       ├── Linear Discriminant Analysis (LDA)
+│       ├── t-Distributed Stochastic Neighbor Embedding (t-SNE)
+│       ├── Singular Value Decomposition (SVD)
+│       └── Independent Component Analysis (ICA)
+├── *Semi-Supervised Learning* ❤️
+│   ├── Self-Training
+│   ├── Co-Training
+│   ├── Multi-View Learning
+│   └── Generative Adversarial Networks (GANs)
+├── *Reinforcement Learning* ❤️
+│   ├── Q-Learning
+│   ├── Deep Q-Network (DQN)
+│   ├── SARSA (State-Action-Reward-State-Action)
+│   ├── Policy Gradient Methods
+│   ├── Actor-Critic Methods
+│   └── Proximal Policy Optimization (PPO)
+└── *Ensemble Learning* ❤️
+    ├── *Bagging* ❤️
+    │   ├── Random Forest
+    │   └── Bootstrap Aggregating
+    ├── *Boosting* ❤️
+    │   ├── Gradient Boosting
+    │   ├── AdaBoost
+    │   ├── XGBoost
+    │   ├── LightGBM
+    │   └── CatBoost
+    └── *Stacking* ❤️
